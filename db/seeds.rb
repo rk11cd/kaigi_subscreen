@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Screen.create({ :name => "main-left",  :tweet => true, :chat => true, :translation => true })
+Screen.create({ :name => "main-right", :tweet => true, :chat => true, :translation => false })
+Screen.create({ :name => "sub-left",   :tweet => true, :chat => true, :translation => true })
+Screen.create({ :name => "sub-right",  :tweet => true, :chat => true, :translation => false })
+Screen.create({ :name => "foyer",      :tweet => true, :chat => true, :translation => false })

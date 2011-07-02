@@ -1,3 +1,5 @@
 Subscreen::Application.routes.draw do
-  root :to => "common#index"
+  resources :screens
+
+  root :to => "screens#top"
 end

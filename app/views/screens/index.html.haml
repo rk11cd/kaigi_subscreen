@@ -1,0 +1,25 @@
+%h1 Listing screens
+
+%table
+  %tr
+    %th Name
+    %th Tweet
+    %th Chat
+    %th Translation
+    %th
+    %th
+    %th
+
+  - @screens.each do |screen|
+    %tr
+      %td= screen.name
+      %td= screen.tweet
+      %td= screen.chat
+      %td= screen.translation
+      %td= link_to 'Show', screen
+      %td= link_to 'Edit', edit_screen_path(screen)
+      %td= link_to 'Destroy', screen, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Screen', new_screen_path

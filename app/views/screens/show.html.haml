@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @screen.name
+%p
+  %b Tweet:
+  = @screen.tweet
+%p
+  %b Chat:
+  = @screen.chat
+%p
+  %b Translation:
+  = @screen.translation
+
+= link_to 'Edit', edit_screen_path(@screen)
+\|
+= link_to 'Back', screens_path

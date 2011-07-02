@@ -1,0 +1,22 @@
+= form_for @screen do |f|
+  -if @screen.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@screen.errors.count, "error")} prohibited this screen from being saved:"
+      %ul
+        - @screen.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :tweet
+    = f.check_box :tweet
+  .field
+    = f.label :chat
+    = f.check_box :chat
+  .field
+    = f.label :translation
+    = f.check_box :translation
+  .actions
+    = f.submit 'Save'
