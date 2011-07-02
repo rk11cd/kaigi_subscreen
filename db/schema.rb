@@ -13,18 +13,18 @@
 ActiveRecord::Schema.define(:version => 20110702083910) do
 
   create_table "notices", :force => true do |t|
-    t.text     "message"
-    t.string   "status"
-    t.string   "requested_by"
+    t.text     "message",                           :null => false
+    t.string   "status",       :default => "draft", :null => false
+    t.string   "requested_by",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "screens", :force => true do |t|
-    t.string   "name"
-    t.boolean  "tweet"
-    t.boolean  "chat"
-    t.boolean  "translation"
+    t.string   "name",                           :null => false
+    t.boolean  "tweet",       :default => false, :null => false
+    t.boolean  "chat",        :default => false, :null => false
+    t.boolean  "translation", :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

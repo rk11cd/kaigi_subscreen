@@ -39,7 +39,6 @@ class NoticesController < ApplicationController
 
   def create
     @notice = Notice.new(params[:notice])
-    @notice.status = "draft"
 
     respond_to do |format|
       if @notice.save
