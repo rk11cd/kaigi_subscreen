@@ -1,9 +1,19 @@
 !!! 5
 %html
   %head
-    %title Subscreen
+    %title
+      = ["KaigiSubscreen", @title].compact.join(" - ")
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "pusher.min", "application"
+    :javascript
+      var channels = [];
     = csrf_meta_tags
   %body
-    = yield
+    - unless @fullscreen
+      #header
+        %h1
+          = link_to "KaigiSubscreen", root_path
+      #main
+        = yield
+    - else
+      = yield

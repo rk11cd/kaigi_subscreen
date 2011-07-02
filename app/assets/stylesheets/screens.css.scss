@@ -1,7 +1,86 @@
-// Place all the styles related to the screens controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#main {
+  ul {
+    padding: 0 20px;
+  }
+}
 
-body.screens {
-  // Place scoped styles here
+#notice {
+  margin: 0;
+  padding: 5px 10px;
+  height: 3.45em;
+  overflow: hidden;
+  border-top: 2px solid rgb(255, 100, 50);
+  border-bottom: 2px solid rgb(120, 0, 0);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 41, 25)), to(rgb(209, 0, 0)));
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+#stream {
+  padding: 0;
+}
+
+#stream p {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.tweet {
+  margin: 0;
+  padding: 10px;
+  font-size: 80%;
+  font-weight: bold;
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #bbb;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.tweet .screen_name a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 70%;
+  font-weight: bold;
+  background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+.irc {
+  margin: 0;
+  padding: 10px;
+  font-size: 80%;
+  font-weight: bold;
+  background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
+  border-top: 2px solid #444;
+  border-bottom: 2px solid #000;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1);
+}
+
+.irc .screen_name {
+  display: inline-block;
+  margin: 0 10px 0 -10px;
+  padding: 5px 10px;
+  font-size: 80%;
+  font-weight: bold;
+  background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#ccc));
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 0 5px 5px 0;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.screen_name {
+  padding: 0 5px;
 }

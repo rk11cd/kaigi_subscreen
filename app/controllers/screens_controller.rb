@@ -14,6 +14,8 @@ class ScreensController < ApplicationController
 
   def show
     @screen = Screen.find(params[:id])
+    @title = @screen.description
+    @fullscreen = true
 
     respond_to do |format|
       format.html # show.html.erb

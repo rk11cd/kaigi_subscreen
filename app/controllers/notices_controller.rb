@@ -1,6 +1,7 @@
 class NoticesController < ApplicationController
   def index
     @notices = Notice.order("created_at DESC")
+    @title = "Notices"
 
     respond_to do |format|
       format.html # index.html.erb
