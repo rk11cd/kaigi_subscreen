@@ -10,6 +10,8 @@ gem 'haml-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
+gem 'jquery-rails'
+
 group :development do
   gem 'sqlite3'
 end
