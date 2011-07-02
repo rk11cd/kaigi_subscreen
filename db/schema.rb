@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110702083910) do
 
   create_table "screens", :force => true do |t|
     t.string   "name",                           :null => false
+    t.string   "description",                    :null => false
     t.boolean  "tweet",       :default => false, :null => false
     t.boolean  "chat",        :default => false, :null => false
     t.boolean  "translation", :default => false, :null => false

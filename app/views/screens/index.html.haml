@@ -3,6 +3,7 @@
 %table
   %tr
     %th Name
+    %th Description
     %th Tweet
     %th Chat
     %th Translation
@@ -13,6 +14,7 @@
   - @screens.each do |screen|
     %tr
       %td= screen.name
+      %td= screen.description
       %td= screen.tweet
       %td= screen.chat
       %td= screen.translation

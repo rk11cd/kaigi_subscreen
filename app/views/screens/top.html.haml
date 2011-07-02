@@ -1,2 +1,3 @@
-- @screens.each do |screen|
-  = link_to screen.name, screen_path(screen)
+%ul
+  - @screens.each do |screen|
+    %li= link_to screen.description, screen
