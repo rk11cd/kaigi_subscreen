@@ -2,4 +2,6 @@
 
 = render 'form'
 
+= link_to "Delete this notice", @notice, :confirm => "Are you sure?", :method => :delete
+\|
 = link_to 'Back', notices_path
