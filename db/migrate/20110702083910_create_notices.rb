@@ -1,7 +1,7 @@
 class CreateNotices < ActiveRecord::Migration
   def change
     create_table :notices do |t|
-      t.text :body
+      t.text :message
       t.string :status
       t.string :requested_by
 

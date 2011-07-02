@@ -1,23 +1,19 @@
-%h1 Listing notices
+%h2 Notices
 
-%table
-  %tr
-    %th Body
-    %th Status
-    %th Requested by
-    %th
-    %th
-    %th
-
-  - @notices.each do |notice|
-    %tr
-      %td= notice.body
-      %td= notice.status
-      %td= notice.requested_by
-      %td= link_to 'Show', notice
-      %td= link_to 'Edit', edit_notice_path(notice)
-      %td= link_to 'Destroy', notice, :confirm => 'Are you sure?', :method => :delete
-
-%br
+- @notices.each do |notice|
+  .notice
+    .status{ :class => notice.status }
+      = notice.status
+    .action
+      = link_to_action notice
+    .message
+      = notice.message
+    .edit
+      = link_to "Edit message", edit_notice_path(notice)
+    .information
+      = "Requested at %s," % notice.created_at.in_time_zone(timezone).strftime("%Y-%m-%d %H:%M:%S")
+      by
+      = notice.requested_by
+      %img{ :src => "http://api.dan.co.jp/twicon/#{notice.requested_by}/mini", :width => 24, :height => 24 }
 
 = link_to 'New Notice', new_notice_path

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110702083910) do
 
   create_table "notices", :force => true do |t|
-    t.text     "body"
+    t.text     "message"
     t.string   "status"
     t.string   "requested_by"
     t.datetime "created_at"

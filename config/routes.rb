@@ -1,5 +1,10 @@
 Subscreen::Application.routes.draw do
-  resources :notices
+  resources :notices do
+    member do
+      get :publish
+      get :close
+    end
+  end
 
   resources :screens
 

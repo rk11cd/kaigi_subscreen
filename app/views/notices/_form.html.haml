@@ -7,13 +7,11 @@
           %li= msg
 
   .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :status
-    = f.text_field :status
+    = f.label :message
+    = f.text_area :message
   .field
     = f.label :requested_by
     = f.text_field :requested_by
+    (Use twitter screen_name for icon)
   .actions
     = f.submit 'Save'

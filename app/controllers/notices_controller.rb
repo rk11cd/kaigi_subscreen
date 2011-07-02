@@ -1,8 +1,6 @@
 class NoticesController < ApplicationController
-  # GET /notices
-  # GET /notices.json
   def index
-    @notices = Notice.all
+    @notices = Notice.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,19 +8,6 @@ class NoticesController < ApplicationController
     end
   end
 
-  # GET /notices/1
-  # GET /notices/1.json
-  def show
-    @notice = Notice.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @notice }
-    end
-  end
-
-  # GET /notices/new
-  # GET /notices/new.json
   def new
     @notice = Notice.new
 
@@ -32,19 +17,33 @@ class NoticesController < ApplicationController
     end
   end
 
-  # GET /notices/1/edit
+  def publish
+    notice = Notice.find(params[:id])
+    notice.status = "published"
+    notice.save
+
+    redirect_to notices_path
+  end
+
+  def close
+    notice = Notice.find(params[:id])
+    notice.status = "closed"
+    notice.save
+
+    redirect_to notices_path
+  end
+
   def edit
     @notice = Notice.find(params[:id])
   end
 
-  # POST /notices
-  # POST /notices.json
   def create
     @notice = Notice.new(params[:notice])
+    @notice.status = "draft"
 
     respond_to do |format|
       if @notice.save
-        format.html { redirect_to @notice, notice: 'Notice was successfully created.' }
+        format.html { redirect_to notices_path, notice: 'Notice was successfully created.' }
         format.json { render json: @notice, status: :created, location: @notice }
       else
         format.html { render action: "new" }
@@ -53,14 +52,12 @@ class NoticesController < ApplicationController
     end
   end
 
-  # PUT /notices/1
-  # PUT /notices/1.json
   def update
     @notice = Notice.find(params[:id])
 
     respond_to do |format|
       if @notice.update_attributes(params[:notice])
-        format.html { redirect_to @notice, notice: 'Notice was successfully updated.' }
+        format.html { redirect_to notices_path, notice: 'Notice was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -69,15 +66,12 @@ class NoticesController < ApplicationController
     end
   end
 
-  # DELETE /notices/1
-  # DELETE /notices/1.json
   def destroy
-    @notice = Notice.find(params[:id])
-    @notice.destroy
+    notice = Notice.find(params[:id])
+    notice.destroy
 
     respond_to do |format|
-      format.html { redirect_to notices_url }
-      format.json { head :ok }
+      format.html { redirect_to notices_path }
     end
   end
 end
