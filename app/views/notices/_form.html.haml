@@ -1,0 +1,19 @@
+= form_for @notice do |f|
+  -if @notice.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@notice.errors.count, "error")} prohibited this notice from being saved:"
+      %ul
+        - @notice.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :requested_by
+    = f.text_field :requested_by
+  .actions
+    = f.submit 'Save'

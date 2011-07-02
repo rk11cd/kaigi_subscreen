@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Body:
+  = @notice.body
+%p
+  %b Status:
+  = @notice.status
+%p
+  %b Requested by:
+  = @notice.requested_by
+
+= link_to 'Edit', edit_notice_path(@notice)
+\|
+= link_to 'Back', notices_path
