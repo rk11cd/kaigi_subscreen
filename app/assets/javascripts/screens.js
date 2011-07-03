@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  if (!window.key) return;
+
   var capacity  = 20;
   var icon_size = 48;
 
