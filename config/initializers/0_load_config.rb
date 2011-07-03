@@ -1,4 +1,4 @@
-configatron.configure_from_yaml("config/config.yml", :hash => Rails.env)
+configatron.configure_from_yaml("config/config.yml")
 
 if configatron.pusher.app_id.nil?
   configatron.pusher.app_id = ENV['PUSHER_APP_ID']

@@ -23,8 +23,7 @@ $(document).ready(function() {
   var stream = pusher.subscribe("stream");
   var notice = pusher.subscribe("notice");
 
-  stream.bind("twitter", function(message) {
-    var data = message.data;
+  stream.bind("tweet", function(data) {
     var user = data.user;
 
     if (user) {

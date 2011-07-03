@@ -16,6 +16,10 @@ gem 'configatron'
 
 group :development do
   gem 'sqlite3'
+
+  gem 'pusher'
+  gem "twitter-stream"
+  gem "yajl-ruby"
 end
 
 group :production do
