@@ -5,8 +5,9 @@
 }
 
 #notice {
+  font-size: 30px;
   margin: 0;
-  padding: 5px 10px;
+  padding: 10px;
   height: 3.45em;
   overflow: hidden;
   border-top: 2px solid rgb(255, 100, 50);
@@ -22,6 +23,7 @@
 }
 
 #stream p {
+  font-size: 250%;
   word-break: break-all;
   word-wrap: break-word;
 }
