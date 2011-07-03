@@ -5,8 +5,8 @@ Subscreen::Application.routes.draw do
     end
 
     member do
-      get :publish
-      get :close
+      put :publish
+      put :close
     end
   end
 
