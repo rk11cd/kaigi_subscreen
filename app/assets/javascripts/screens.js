@@ -49,9 +49,8 @@ $(document).ready(function() {
     }
   });
 
-  notice.bind("text", function(message) {
-    var data       = message.data;
-    var body       = data.body;
+  notice.bind("notice", function(data) {
+    var message    = data.message;
     var updated_at = data.updated_at;
 
     var div = $("#notice");
@@ -60,7 +59,7 @@ $(document).ready(function() {
 
     div.append($("<span/>").hide()
                .addClass("message")
-               .text(body).fadeIn(2000));
+               .text(message).fadeIn(2000));
   });
 
   for (var i = 0; i < channels.length; i++) {

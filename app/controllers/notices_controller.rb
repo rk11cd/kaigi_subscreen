@@ -74,4 +74,12 @@ class NoticesController < ApplicationController
       format.html { redirect_to notices_path }
     end
   end
+
+  def sample
+    notice = Notice.published.sample
+
+    respond_to do |format|
+      format.json { render :json => notice}
+    end
+  end
 end

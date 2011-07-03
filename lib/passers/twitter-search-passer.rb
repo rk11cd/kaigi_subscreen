@@ -13,7 +13,7 @@ class TwitterSearchPasser < Passer
     super(:stream, :tweet)
   end
 
-  def connect(query)
+  def start(query)
     EventMachine::run {
       EventMachine::defer {
         stream = Twitter::JSONStream.connect(
@@ -34,5 +34,8 @@ class TwitterSearchPasser < Passer
   end
 end
 
+query = ARGV[0] || "rubykaigi"
+p query
+
 twitter = TwitterSearchPasser.new
-twitter.connect("rubykaigi")
+twitter.start(query)
