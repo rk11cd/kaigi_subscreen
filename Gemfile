@@ -12,6 +12,8 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
+gem 'configatron'
+
 group :development do
   gem 'sqlite3'
 end

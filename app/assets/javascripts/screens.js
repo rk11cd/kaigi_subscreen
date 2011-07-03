@@ -19,7 +19,7 @@ $(document).ready(function() {
     cutoff();
   }
 
-  var pusher = new Pusher("103f2d7ba59163142c42");
+  var pusher = new Pusher(key);
   var stream = pusher.subscribe("stream");
   var notice = pusher.subscribe("notice");
 
