@@ -63,6 +63,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    net-irc (0.0.9)
     pg (0.11.0)
     polyglot (0.3.1)
     pusher (0.8.1)
@@ -136,6 +137,7 @@ DEPENDENCIES
   haml
   haml-rails
   jquery-rails
+  net-irc
   pg
   pusher
   rails (= 3.1.0.rc4)

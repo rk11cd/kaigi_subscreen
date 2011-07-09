@@ -64,23 +64,17 @@ $(document).ready(function() {
                .text(message).fadeIn(2000));
   });
 
-  for (var i = 0; i < channels.length; i++) {
-    var channel = channels[i];
+  stream.bind("irc", function(data) {
+    var nick    = data.nick;
+    var channel = data.channel;
+    var message = data.message;
 
-    stream.bind("irc-" + channel, function(message) {
-      var data       = message.body;
-      var nick       = data.nick;
-      var text       = data.text;
+    var div = $("<div/>").addClass("irc")
+                         .append($("<p/>")
+                         .append($("<span/>").addClass("screen_name")
+                                             .text(nick))
+                         .append($('<span/>').text(format(message))));
 
-      var div = $("<div/>")
-        .addClass("irc")
-        .append($("<p/>")
-                .append($("<span/>")
-                        .addClass("screen_name")
-                        .text(nick))
-                .append($('<span/>').text(format(text))));
-
-      prepend(div);
-    });
-  }
+    prepend(div);
+  });
 });

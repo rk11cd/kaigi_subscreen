@@ -20,6 +20,7 @@ group :development do
   gem 'pusher'
   gem "twitter-stream"
   gem "yajl-ruby"
+  gem "net-irc"
 end
 
 group :production do

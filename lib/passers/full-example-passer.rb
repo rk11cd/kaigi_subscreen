@@ -10,13 +10,11 @@ class TwitterExamplePasser < Passer
     @texts = %w(かしゆかでーす あーちゃんでーす のっちでーす)
   end
 
-  def start
-    loop do
-      data = { "user" => @users.sample, "id" => "xxx", "text" => @texts.sample }
-      p ["Twitter Example", data]
-      pass(data)
-      sleep 1.2
-    end
+  def trigger
+    data = { "user" => @users.sample, "id" => "xxx", "text" => @texts.sample }
+    p ["Twitter Example", data]
+    pass(data)
+    sleep 1.2
   end
 end
 
@@ -30,24 +28,42 @@ class NoticeExamplePasser < Passer
                 )
   end
 
-  def start
-    loop do
-      data = { "message" => @messages.sample }
-      p ["Notice Example", data]
-      pass(data)
-      sleep 3
-    end
+  def trigger
+    data = { "message" => @messages.sample }
+    p ["Notice Example", data]
+    pass(data)
+    sleep 3
+  end
+end
+
+class IrcExamplePasser < Passer
+  def initialize
+    super(:stream, :irc)
+    @messages = %w(hi hello irc text message world)
+  end
+
+  def trigger
+    data = { :channel => "channel", :nick => "nick", :message => @messages.sample }
+    p ["Irc Example", data]
+    pass(data)
+    sleep 3.2
   end
 end
 
 EventMachine::run {
-  EventMachine::defer {
-    twitter = TwitterExamplePasser.new
-    twitter.start
+  twitter = TwitterExamplePasser.new
+  notice  = NoticeExamplePasser.new
+  irc     = IrcExamplePasser.new
+
+  EventMachine::add_periodic_timer(0.5) {
+    twitter.trigger
   }
 
-  EventMachine::defer {
-    notice = NoticeExamplePasser.new
-    notice.start
+  EventMachine::add_periodic_timer(0.6) {
+    notice.trigger
+  }
+
+  EventMachine::add_periodic_timer(0.7) {
+    irc.trigger
   }
 }
