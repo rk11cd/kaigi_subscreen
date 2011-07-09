@@ -14,7 +14,7 @@
       - tweet_id    = tweet["id_str"]
       %div.tweet
         %p
-          %img.icon{ :src => tweet["profile_image_url"], :alt => screen_name, :width => 48, :height => 48 }
+          %img.icon{ :src => tweet["profile_image_url"], :alt => screen_name, :width => 36, :height => 36 }
           %span.screen_name
             %a{ :href => "http://twitter.com/#{screen_name}/status/#{tweet_id}", :target => "_blank" }= screen_name
-            = tweet["text"]
+          = tweet["text"]

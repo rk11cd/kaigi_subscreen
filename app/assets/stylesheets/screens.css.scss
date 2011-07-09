@@ -6,8 +6,9 @@
 
 #notice {
   font-size: 30px;
+  line-height: 32px;
   margin: 0;
-  padding: 10px;
+  padding: 5px 10px;
   height: 3.45em;
   overflow: hidden;
   border-top: 2px solid rgb(255, 100, 50);
@@ -23,7 +24,7 @@
 }
 
 #stream p {
-  font-size: 250%;
+  font-size: 26px;
   word-break: break-all;
   word-wrap: break-word;
 }
@@ -31,7 +32,6 @@
 .tweet {
   margin: 0;
   padding: 10px;
-  font-size: 80%;
   font-weight: bold;
   background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
   border-top: 2px solid #fff;
@@ -40,8 +40,11 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 }
 
+.tweet p {
+  line-height: 36px;
+}
+
 .tweet .screen_name a {
-  display: inline-block;
   margin: 0 5px;
   padding: 5px 10px;
   font-size: 70%;
@@ -57,7 +60,6 @@
 .irc {
   margin: 0;
   padding: 10px;
-  font-size: 80%;
   font-weight: bold;
   background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#222));
   border-top: 2px solid #444;

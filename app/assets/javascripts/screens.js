@@ -1,5 +1,5 @@
 var capacity  = 20;
-var icon_size = 48;
+var icon_size = 36;
 
 function cutoff() {
   if ($("#stream div").size() >= capacity) {
@@ -24,20 +24,16 @@ var handlers = {
       var screen_name       = user.screen_name;
       var profile_image_url = user.profile_image_url;
 
-      var div = $("<div/>")
-      .addClass("tweet")
-      .append($("<p/>")
-              .append($("<img/>")
-                      .addClass("icon")
-                      .attr({ src: profile_image_url, alt: screen_name, width: icon_size, height: icon_size }))
-                      .append($("<span/>")
-                              .addClass("screen_name")
-                              .append($("<a/>")
-                                      .attr({ href: "http://twitter.com/" + screen_name + "/status/" + id, target: "_blank" })
-                                        .text(screen_name)))
-                                      .append(text));
+      var div = $("<div/>").addClass("tweet")
+                           .append($("<p/>")
+                                   .append($("<img/>").addClass("icon")
+                                                      .attr({ src: profile_image_url, alt: screen_name, width: icon_size, height: icon_size }))
+                                   .append($("<span/>").addClass("screen_name")
+                                                       .append($("<a/>").attr({ href: "http://twitter.com/" + screen_name + "/status/" + id, target: "_blank" })
+                                                               .text(screen_name)))
+                                   .append(text));
 
-                                      prepend(div);
+      prepend(div);
     }
   },
   irc: function(data) {
