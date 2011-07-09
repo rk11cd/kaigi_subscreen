@@ -14,7 +14,6 @@ class TwitterExamplePasser < Passer
     data = { "user" => @users.sample, "id" => "xxx", "text" => @texts.sample }
     p ["Twitter Example", data]
     pass(data)
-    sleep 1.2
   end
 end
 
@@ -32,7 +31,6 @@ class NoticeExamplePasser < Passer
     data = { "message" => @messages.sample }
     p ["Notice Example", data]
     pass(data)
-    sleep 3
   end
 end
 
@@ -46,7 +44,6 @@ class IrcExamplePasser < Passer
     data = { :channel => "channel", :nick => "nick", :message => @messages.sample }
     p ["Irc Example", data]
     pass(data)
-    sleep 3.2
   end
 end
 
