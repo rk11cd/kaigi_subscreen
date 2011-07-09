@@ -8,7 +8,7 @@ class TwitterSearchPasser < Passer
     username = configatron.twitter.username
     password = configatron.twitter.password
 
-    @ignore = configatron.twitter.ignore
+    @ignore = configatron.twitter.ignore || []
     @auth   = "#{username}:#{password}"
 
     super(:stream, :tweet)
