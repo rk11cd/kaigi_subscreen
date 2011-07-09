@@ -8,7 +8,7 @@
   - unless @notice.nil?
     = @notice.message
 #stream
-  - unless @tweet.nil?
+  - unless @tweets.nil?
     - @tweets.each do |tweet|
       - screen_name = tweet["from_user"]
       - tweet_id    = tweet["id_str"]
