@@ -1,0 +1,15 @@
+pusher:
+  app_id: app_id
+  key:    key
+  secret: secret
+twitter:
+  username: username
+  password: password
+  ignore:
+    - screen_name_1
+    - screen_name_2
+freenode:
+  nick: nick
+  user: user
+  real: real
+  pass: pass
