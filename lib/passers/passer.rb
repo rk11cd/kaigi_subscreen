@@ -1,3 +1,6 @@
+require "bundler"
+Bundler.setup(:development)
+
 require "pusher"
 require "configatron"
 
