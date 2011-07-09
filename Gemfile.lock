@@ -42,7 +42,6 @@ GEM
       yamler (>= 0.1.0)
     crack (0.1.8)
     erubis (2.7.0)
-    eventmachine (0.12.10)
     execjs (1.2.0)
       multi_json (~> 1.0)
     haml (3.1.2)
@@ -52,7 +51,6 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     hike (1.1.0)
-    http_parser.rb (0.5.1)
     i18n (0.6.0)
     jquery-rails (1.0.12)
       railties (~> 3.0)
@@ -106,7 +104,6 @@ GEM
       sprockets (>= 2.0.0.beta.9)
     signature (0.1.2)
       ruby-hmac
-    simple_oauth (0.1.5)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -117,10 +114,6 @@ GEM
     tilt (1.3.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    twitter-stream (0.1.14)
-      eventmachine (>= 0.12.8)
-      http_parser.rb (~> 0.5.1)
-      simple_oauth (~> 0.1.4)
     tzinfo (0.3.29)
     uglifier (1.0.0)
       execjs (>= 0.3.0)
@@ -145,6 +138,5 @@ DEPENDENCIES
   sass-rails (~> 3.1.0.rc)
   sqlite3
   therubyracer-heroku
-  twitter-stream
   uglifier
   yajl-ruby
