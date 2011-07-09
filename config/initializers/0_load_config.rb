@@ -17,5 +17,5 @@ if configatron.twitter.password.nil?
   configatron.twitter.password = ENV['TWITTER_PASSWORD']
 end
 if configatron.twitter.ignore.nil?
-  configatron.twitter.password = ENV['TWITTER_IGNORE']
+  configatron.twitter.password = ENV['TWITTER_IGNORE'].split(",")
 end
