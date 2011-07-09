@@ -10,7 +10,12 @@ Subscreen::Application.routes.draw do
     end
   end
 
-  resources :screens
+  resources :screens do
+    member do
+      put :bind
+      put :unbind
+    end
+  end
 
   root :to => "screens#top"
 end

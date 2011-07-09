@@ -1,27 +1,16 @@
-%h1 Listing screens
 
 %table
   %tr
-    %th Name
     %th Description
-    %th Tweet
-    %th Chat
-    %th Translation
-    %th
-    %th
-    %th
+    - @channels.each do |channel|
+      %th
+        = channel.group
+        %br
+        = channel.name
+
 
   - @screens.each do |screen|
     %tr
-      %td= screen.name
-      %td= screen.description
-      %td= screen.tweet
-      %td= screen.chat
-      %td= screen.translation
-      %td= link_to 'Show', screen
-      %td= link_to 'Edit', edit_screen_path(screen)
-      %td= link_to 'Destroy', screen, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Screen', new_screen_path
+      %td= link_to screen.description, screen_path(screen)
+      - @channels.each do |channel|
+        %td= link_to_switch(screen, channel)

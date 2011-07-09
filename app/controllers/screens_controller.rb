@@ -7,6 +7,7 @@ class ScreensController < ApplicationController
 
   def index
     @screens = Screen.all
+    @channels = Channel.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,6 +31,21 @@ class ScreensController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @screen }
     end
+  end
+
+  def bind
+    screen = Screen.find(params[:id])
+    channel = Channel.find(params[:channel])
+    Assignment.create(:screen => screen, :channel => channel)
+    redirect_to screens_path
+  end
+
+  def unbind
+    screen = Screen.find(params[:id])
+    channel = Channel.find(params[:channel])
+    assignment = Assignment.find_by_screen_id_and_channel_id(screen, channel)
+    assignment.destroy
+    redirect_to screens_path
   end
 
   def new
