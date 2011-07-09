@@ -4,7 +4,8 @@
    window.key = "#{configatron.pusher.key}";
 
 #notice
-  = @notice.message
+  - unless @notice.nil?
+    = @notice.message
 #stream
   - @tweets.each do |tweet|
     - screen_name = tweet["from_user"]
