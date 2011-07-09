@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702083910) do
+ActiveRecord::Schema.define(:version => 20110709175718) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "screen_id",  :null => false
+    t.integer  "channel_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "channels", :force => true do |t|
+    t.string   "group",      :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notices", :force => true do |t|
     t.text     "message",                           :null => false
@@ -21,11 +35,8 @@ ActiveRecord::Schema.define(:version => 20110702083910) do
   end
 
   create_table "screens", :force => true do |t|
-    t.string   "name",                           :null => false
-    t.string   "description",                    :null => false
-    t.boolean  "tweet",       :default => false, :null => false
-    t.boolean  "chat",        :default => false, :null => false
-    t.boolean  "translation", :default => false, :null => false
+    t.string   "name",        :null => false
+    t.string   "description", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
