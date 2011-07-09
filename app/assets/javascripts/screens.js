@@ -51,16 +51,26 @@ var handlers = {
   }
 };
 
+function subscribeChannels(pusher) {
+  var stream = pusher.subscribe("stream");
+  $.each(window.channels, function(group, names) {
+    $.each(names, function(index, name) {
+      stream.bind([group,name].join("-"), handlers[group]);
+    })
+  });
+}
+
 $(document).ready(function() {
   if (!window.key) return;
 
     var pusher = new Pusher(key);
-    var stream = pusher.subscribe("stream");
-    $.each(window.channels, function(group, names) {
-      $.each(names, function(index, name) {
-        console.log(group,name);
-        stream.bind([group,name].join("-"), handlers[group]);
-      })
+    subscribeChannels(pusher);
+
+    var signal = pusher.subscribe("signal");
+    signal.bind(["update",window.screen_id].join("-"), function(channels) {
+      window.channels = channels;
+      pusher.unsubscribe("stream");
+      subscribeChannels(pusher);
     });
 
     var notice = pusher.subscribe("notice");

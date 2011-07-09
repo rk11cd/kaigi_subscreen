@@ -20,7 +20,7 @@ class ScreensController < ApplicationController
     @title = @screen.description
     @fullscreen = true
 
-    @channels = Hash[@screen.channels.group_by(&:group).map{|k,v| [k,v.map(&:name)] }]
+    @channels = @screen.channels_as_hash
     if @channels.include? "tweet"
       query = @channels["tweet"].join(",")
       @tweets = JSON.parse(open("http://search.twitter.com/search.json?q=#{URI.encode(query)}").read)["results"]
@@ -37,6 +37,8 @@ class ScreensController < ApplicationController
     screen = Screen.find(params[:id])
     channel = Channel.find(params[:channel])
     Assignment.create(:screen => screen, :channel => channel)
+
+    screen.send_update
     redirect_to screens_path
   end
 
@@ -45,6 +47,8 @@ class ScreensController < ApplicationController
     channel = Channel.find(params[:channel])
     assignment = Assignment.find_by_screen_id_and_channel_id(screen, channel)
     assignment.destroy
+
+    screen.send_update
     redirect_to screens_path
   end
 

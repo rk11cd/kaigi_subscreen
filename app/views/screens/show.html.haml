@@ -3,6 +3,7 @@
 :javascript
    window.key = "#{configatron.pusher.key}";
    window.channels = #{@channels.to_json};
+   window.screen_id = #{@screen.id};
 
 #notice
   - unless @notice.nil?
