@@ -2,15 +2,16 @@ require_relative "passer"
 require "net/irc"
 
 class Client < Net::IRC::Client
-  def initialize(passer, host, port, options = {})
+  def initialize(host, port, options = {})
     super(host, port, options)
 
-    @channels = options[:channels]
-    @passer   = passer
+    @passers = Hash[options[:channels].map(&:downcase).map{|channel|
+      [channel, IrcPasser.new(channel)]
+    }]
   end
 
   def on_rpl_welcome(m)
-    @channels.each do |channel|
+    @passers.keys.each do |channel|
       post JOIN, "##{channel}"
     end
   end
@@ -19,19 +20,18 @@ class Client < Net::IRC::Client
     channel, message = *m
     nick = m.prefix.nick.to_s
 
-    @passer.pass(:channel => channel, :nick => nick, :message => message)
+    @passers[channel.sub(/^#/,"").downcase].pass(:nick => nick, :message => message)
   end
 end
 
 class IrcPasser < Passer
-  def initialize
-    super(:stream, :irc)
+  def initialize(channel)
+    super(:stream, "irc-"+channel)
   end
 end
 
 channels = %w(rubykaigi rubykaigi1 rubykaigi2)
-passer = IrcPasser.new
-client = Client.new(passer, "irc.freenode.net", 6667,
+client = Client.new("irc.freenode.net", 6667,
                     {
                       :user     => configatron.freenode.user,
                       :nick     => configatron.freenode.nick,
