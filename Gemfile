@@ -14,10 +14,11 @@ gem "jquery-rails"
 
 gem "configatron"
 
+gem "pusher"
+
 group :development do
   gem "sqlite3"
 
-  gem "pusher"
   gem "yajl-ruby"
   gem "net-irc"
   gem "eventmachine"
