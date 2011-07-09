@@ -29,7 +29,7 @@ $(document).ready(function() {
     var user = data.user;
 
     if (user) {
-      var id                = data.id;
+      var id                = data.id_str;
       var text              = data.text;
       var screen_name       = user.screen_name;
       var profile_image_url = user.profile_image_url;
