@@ -20,6 +20,7 @@ group :development do
   gem "pusher"
   gem "yajl-ruby"
   gem "net-irc"
+  gem "eventmachine"
 end
 
 group :production do

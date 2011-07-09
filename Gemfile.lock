@@ -42,6 +42,7 @@ GEM
       yamler (>= 0.1.0)
     crack (0.1.8)
     erubis (2.7.0)
+    eventmachine (0.12.10)
     execjs (1.2.0)
       multi_json (~> 1.0)
     haml (3.1.2)
@@ -127,6 +128,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   configatron
+  eventmachine
   haml
   haml-rails
   jquery-rails
