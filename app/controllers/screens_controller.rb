@@ -1,3 +1,5 @@
+require "open-uri"
+
 class ScreensController < ApplicationController
   def top
     @screens = Screen.all
@@ -16,6 +18,9 @@ class ScreensController < ApplicationController
     @screen = Screen.find(params[:id])
     @title = @screen.description
     @fullscreen = true
+
+    @tweets = JSON.parse(open("http://search.twitter.com/search.json?q=rubykaigi").read)["results"]
+    @notice = Notice.published.sample
 
     respond_to do |format|
       format.html # show.html.erb
