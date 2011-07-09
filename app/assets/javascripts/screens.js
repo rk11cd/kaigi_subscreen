@@ -4,10 +4,6 @@ $(document).ready(function() {
   var capacity  = 20;
   var icon_size = 48;
 
-  function format(text) {
-    return text;
-  }
-
   function cutoff() {
     if ($("#stream div").size() >= capacity) {
       $("#stream div:last").slideDown(100, function() {
@@ -45,7 +41,7 @@ $(document).ready(function() {
                                 .append($("<a/>")
                                         .attr({ href: "http://twitter.com/" + screen_name + "/status/" + id, target: "_blank" })
                                         .text(screen_name)))
-                        .append(format(text)));
+                        .append(text));
 
       prepend(div);
     }
@@ -73,7 +69,7 @@ $(document).ready(function() {
                          .append($("<p/>")
                          .append($("<span/>").addClass("screen_name")
                                              .text(nick))
-                         .append($('<span/>').text(format(message))));
+                         .append($('<span/>').text(message)));
 
     prepend(div);
   });
