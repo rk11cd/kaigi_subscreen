@@ -19,7 +19,11 @@ class ScreensController < ApplicationController
     @title = @screen.description
     @fullscreen = true
 
-    @tweets = JSON.parse(open("http://search.twitter.com/search.json?q=rubykaigi").read)["results"]
+    @channels = Hash[@screen.channels.group_by(&:group).map{|k,v| [k,v.map(&:name)] }]
+    if @channels.include? "tweet"
+      query = @channels["tweet"].join(",")
+      @tweets = JSON.parse(open("http://search.twitter.com/search.json?q=#{URI.encode(query)}").read)["results"]
+    end
     @notice = Notice.published.sample
 
     respond_to do |format|

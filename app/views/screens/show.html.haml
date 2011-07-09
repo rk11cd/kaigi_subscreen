@@ -2,17 +2,19 @@
   body { overflow: hidden; }
 :javascript
    window.key = "#{configatron.pusher.key}";
+   window.channels = #{@channels.to_json};
 
 #notice
   - unless @notice.nil?
     = @notice.message
 #stream
-  - @tweets.each do |tweet|
-    - screen_name = tweet["from_user"]
-    - tweet_id    = tweet["id_str"]
-    %div.tweet
-      %p
-        %img.icon{ :src => tweet["profile_image_url"], :alt => screen_name, :width => 48, :height => 48 }
-        %span.screen_name
-          %a{ :href => "http://twitter.com/#{screen_name}/status/#{tweet_id}", :target => "_blank" }= screen_name
-          = tweet["text"]
+  - unless @tweet.nil?
+    - @tweets.each do |tweet|
+      - screen_name = tweet["from_user"]
+      - tweet_id    = tweet["id_str"]
+      %div.tweet
+        %p
+          %img.icon{ :src => tweet["profile_image_url"], :alt => screen_name, :width => 48, :height => 48 }
+          %span.screen_name
+            %a{ :href => "http://twitter.com/#{screen_name}/status/#{tweet_id}", :target => "_blank" }= screen_name
+            = tweet["text"]

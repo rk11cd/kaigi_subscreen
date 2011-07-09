@@ -5,7 +5,7 @@ require "eventmachine"
 
 class TwitterExamplePasser < Passer
   def initialize
-    super(:stream, :tweet)
+    super(:stream, "tweet-rubykaigi")
     @users = %w(june29 darashi kei_s).map { |name| { "screen_name" => name,"profile_image_url" => "http://api.dan.co.jp/twicon/#{name}/normal" }}
     @texts = %w(かしゆかでーす あーちゃんでーす のっちでーす)
   end
@@ -35,8 +35,8 @@ class NoticeExamplePasser < Passer
 end
 
 class IrcExamplePasser < Passer
-  def initialize
-    super(:stream, :irc)
+  def initialize(name)
+    super(:stream, name)
     @messages = %w(hi hello irc text message world)
   end
 
@@ -50,7 +50,8 @@ end
 EventMachine::run {
   twitter = TwitterExamplePasser.new
   notice  = NoticeExamplePasser.new
-  irc     = IrcExamplePasser.new
+  irc     = IrcExamplePasser.new("irc-rubykaigi")
+  irc1    = IrcExamplePasser.new("irc-rubykaigi1")
 
   EventMachine::add_periodic_timer(0.5) {
     twitter.trigger
@@ -62,5 +63,9 @@ EventMachine::run {
 
   EventMachine::add_periodic_timer(0.7) {
     irc.trigger
+  }
+
+  EventMachine::add_periodic_timer(0.7) {
+    irc1.trigger
   }
 }
