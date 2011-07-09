@@ -1,5 +1,5 @@
 require "bundler"
-Bundler.setup(:development)
+Bundler.setup(:default, :development)
 
 require "pusher"
 require "configatron"
