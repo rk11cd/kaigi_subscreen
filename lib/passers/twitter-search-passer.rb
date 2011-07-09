@@ -17,8 +17,10 @@ class TwitterSearchPasser < Passer
   def start(query)
     uri = URI.parse("http://#{@auth}@stream.twitter.com/1/statuses/filter.json?track=#{URI.encode(query)}")
     Yajl::HttpStream.get(uri) do |tweet|
-      p tweet
-      pass(tweet)
+      unless @ignore.include? tweet["user"]["screen_name"]
+        p tweet
+        pass(tweet)
+      end
     end
   end
 end
