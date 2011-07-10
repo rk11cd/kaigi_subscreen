@@ -9,10 +9,17 @@ class NoticePasser < Passer
   end
 
   def start(interval = 10)
+    prev = nil
+
     loop do
-      notice = Yajl.load(open(@url))
+      notice = Yajl.load(open("#{@url}?excludes=#{prev}"))
       p notice
-      pass(notice)
+
+      unless notice.nil?
+        pass(notice)
+        prev = notice["id"]
+      end
+
       sleep interval
     end
   end

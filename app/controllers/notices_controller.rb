@@ -76,7 +76,13 @@ class NoticesController < ApplicationController
   end
 
   def sample
-    notice = Notice.published.sample
+    excludes = params[:excludes]
+
+    if excludes.blank?
+      notice = Notice.published.sample
+    else
+      notice = Notice.published.where("id NOT IN (?)", excludes.split(",")).sample
+    end
 
     respond_to do |format|
       format.json { render :json => notice}
