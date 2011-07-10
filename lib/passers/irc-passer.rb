@@ -30,7 +30,7 @@ class IrcPasser < Passer
   end
 end
 
-channels = %w(rubykaigi rubykaigi1 rubykaigi2 rubykaigi1-m17n rubykaigi2-m17n)
+channels = %w(rubykaigi rubykaigi-1 rubykaigi-2 rubykaigi-1-m17n rubykaigi-2-m17n)
 client = Client.new("irc.freenode.net", 6667,
                     {
                       :user     => configatron.freenode.user,
