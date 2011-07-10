@@ -89,6 +89,26 @@
   padding: 0 5px;
 }
 
-th, td {
+th {
+  font-weight: normal;
+}
+
+td {
   padding: 10px;
+  text-align: center;
+
+  a.switch {
+    padding: 10px 50px;
+    color: #fff;
+    text-weight: bold;
+    text-decoration: none;
+  }
+
+  a.on {
+    background-color: green;
+  }
+
+  a.off {
+    background-color: #ccc;
+  }
 }

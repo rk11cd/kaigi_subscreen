@@ -61,6 +61,17 @@ function subscribeChannels(pusher) {
 }
 
 $(document).ready(function() {
+  $("a.on").hover(function() {
+    $(this).removeClass("on").addClass("off").text("off");
+  }, function() {
+    $(this).removeClass("off").addClass("on").text("on");
+  });
+  $("a.off").hover(function() {
+    $(this).removeClass("off").addClass("on").text("on");
+  }, function() {
+    $(this).removeClass("on").addClass("off").text("off");
+  });
+
   if (!window.key) return;
 
     var pusher = new Pusher(key);
