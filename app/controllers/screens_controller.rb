@@ -6,8 +6,8 @@ class ScreensController < ApplicationController
   end
 
   def index
-    @screens = Screen.all
-    @channels = Channel.all
+    @screens  = Screen.order("id ASC")
+    @channels = Channel.order("id ASC")
 
     respond_to do |format|
       format.html # index.html.erb
