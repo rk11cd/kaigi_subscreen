@@ -11,7 +11,7 @@
     .edit
       = link_to "Edit message", edit_notice_path(notice)
     .information
-      = "Requested at %s," % notice.created_at.in_time_zone(timezone).strftime("%Y-%m-%d %H:%M:%S")
+      = "Requested at %s," % notice.created_at.in_time_zone(timezone).strftime("%m-%d %H:%M")
       by
       = notice.requested_by
       %img{ :src => "http://api.dan.co.jp/twicon/#{notice.requested_by}/mini", :width => 24, :height => 24 }
