@@ -8,7 +8,7 @@ twitter:
   ignore:
     - screen_name_1
     - screen_name_2
-freenode:
+irc:
   nick: nick
   user: user
   real: real

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 tweet        = Channel.create(:group => :tweet, :name => "rubykaigi")
-irc_rk1      = Channel.create(:group => :irc,   :name => "rubykaigi-1")
-irc_rk1_m17n = Channel.create(:group => :irc,   :name => "rubykaigi-1-m17n")
-irc_rk2      = Channel.create(:group => :irc,   :name => "rubykaigi-2")
-irc_rk2_m17n = Channel.create(:group => :irc,   :name => "rubykaigi-2-m17n")
+
+irc_rk       = Channel.create(:group => :irc,   :name => "rubykaigi")
+irc_rk1      = Channel.create(:group => :irc,   :name => "kaigi1")
+irc_rk1_m17n = Channel.create(:group => :irc,   :name => "kaigi1-m17n")
+irc_rk2      = Channel.create(:group => :irc,   :name => "kaigi2")
+irc_rk2_m17n = Channel.create(:group => :irc,   :name => "kaigi2-m17n")
 
 main_left    = Screen.create(:name => "main-left",  :description => "大ホール左スクリーン")
 main_right   = Screen.create(:name => "main-right", :description => "大ホール右スクリーン")
