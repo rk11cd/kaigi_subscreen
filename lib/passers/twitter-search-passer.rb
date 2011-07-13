@@ -28,6 +28,7 @@ class TwitterSearchPasser < Passer
 
         current = Time.now.strftime("%Y%m%d%H")
         unless current == prev
+          logfile.close
           logfile = open(File.join(File.dirname(__FILE__), "..", "..", "db", "tweets", "#{@query}.#{current}"), "a+")
         end
 
@@ -36,6 +37,8 @@ class TwitterSearchPasser < Passer
         prev = current
       end
     end
+
+    logfile.close
   end
 end
 
