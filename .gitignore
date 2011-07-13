@@ -1,6 +1,7 @@
 .bundle
 config/config.yml
 db/*.sqlite3
+db/tweets/*
 log/*.log
 tmp/
 .sass-cache/
