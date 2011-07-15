@@ -21,3 +21,9 @@ if configatron.twitter.ignore.nil?
     configatron.twitter.password = ENV['TWITTER_IGNORE'].split(",")
   end
 end
+if configatron.basic_authentication.username.nil?
+  configatron.basic_authentication.username = ENV['BASIC_USERNAME']
+end
+if configatron.basic_authentication.password.nil?
+  configatron.basic_authentication.password = ENV['BASIC_PASSWORD']
+end

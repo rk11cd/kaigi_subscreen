@@ -1,6 +1,11 @@
 require "open-uri"
 
 class ScreensController < ApplicationController
+  if !configatron.basic_authentication.username.blank? &&
+    !configatron.basic_authentication.password.blank?
+    before_filter :basic_authentication, :only => :index
+  end
+
   def top
     @screens = Screen.all
   end

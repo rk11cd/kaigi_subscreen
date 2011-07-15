@@ -1,4 +1,9 @@
 class NoticesController < ApplicationController
+  if !configatron.basic_authentication.username.blank? &&
+    !configatron.basic_authentication.password.blank?
+    before_filter :basic_authentication, :only => :index
+  end
+
   def index
     @notices = Notice.order("created_at DESC")
     @title = "Notices"
