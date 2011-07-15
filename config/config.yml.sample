@@ -3,8 +3,12 @@ pusher:
   key:    key
   secret: secret
 twitter:
-  username: username
-  password: password
+  auth1:
+    username: username
+    password: password
+  auth2:
+    username: username
+    password: password
   ignore:
     - screen_name_1
     - screen_name_2

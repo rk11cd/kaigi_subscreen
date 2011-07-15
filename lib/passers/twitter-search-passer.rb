@@ -4,9 +4,10 @@ require "yajl"
 require "yajl/http_stream"
 
 class TwitterSearchPasser < Passer
-  def initialize(query, exclude = nil)
-    username = configatron.twitter.username
-    password = configatron.twitter.password
+  def initialize(auth, query, exclude = nil)
+    setting = configatron.twitter.to_hash
+    username = setting[auth.to_sym][:username]
+    password = setting[auth.to_sym][:password]
 
     @query   = query
     @exclude = exclude
@@ -44,9 +45,10 @@ class TwitterSearchPasser < Passer
   end
 end
 
-query   = ARGV[0] || "rubykaigi"
-exclude = ARGV[1]
+auth = ARGV[0]
+query   = ARGV[1] || "rubykaigi"
+exclude = ARGV[2]
 p query, exclude
 
-twitter = TwitterSearchPasser.new(query, exclude)
+twitter = TwitterSearchPasser.new(auth, query, exclude)
 twitter.start
