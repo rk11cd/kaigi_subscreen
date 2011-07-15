@@ -18,4 +18,4 @@
           %img.icon{ :src => tweet["profile_image_url"], :alt => screen_name, :width => 36, :height => 36 }
           %span.screen_name
             %a{ :href => "http://twitter.com/#{screen_name}/status/#{tweet_id}", :target => "_blank" }= screen_name
-          = tweet["text"]
+          = raw tweet["text"]
