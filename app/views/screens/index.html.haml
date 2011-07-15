@@ -2,15 +2,14 @@
 %table
   %tr
     %th
-    - @channels.each do |channel|
-      %th
+    - @screens.each do |screen|
+      %th= link_to screen.description, screen_path(screen)
+
+  - @channels.each do |channel|
+    %tr
+      %td
         = channel.group
         %br
         = channel.name
-
-
-  - @screens.each do |screen|
-    %tr
-      %td= link_to screen.description, screen_path(screen)
-      - @channels.each do |channel|
+      - @screens.each do |screen|
         %td= link_to_switch(screen, channel)
