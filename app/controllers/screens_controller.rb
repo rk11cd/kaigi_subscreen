@@ -22,7 +22,7 @@ class ScreensController < ApplicationController
 
     @channels = @screen.channels_as_hash
     if @channels.include? "tweet"
-      query = @channels["tweet"].join(",")
+      query = @channels["tweet"].join(" OR ")
       @tweets = JSON.parse(open("http://search.twitter.com/search.json?q=#{URI.encode(query)}").read)["results"]
     end
     @notice = Notice.published.sample
