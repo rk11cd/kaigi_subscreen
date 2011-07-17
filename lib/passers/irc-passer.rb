@@ -20,7 +20,7 @@ class Client < Net::IRC::Client
     channel, message = *m
     nick = m.prefix.nick.to_s
 
-    @passers[channel.sub(/^#/,"").downcase].pass(:nick => nick, :message => message)
+    @passers[channel.sub(/^#/,"").downcase].pass(:nick => nick, :message => message, :usec => Time.now.usec)
   end
 end
 

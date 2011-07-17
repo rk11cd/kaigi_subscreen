@@ -1,5 +1,6 @@
 var capacity  = 20;
 var icon_size = 36;
+var prev_usec;
 
 function cutoff() {
   if ($("#stream div").size() >= capacity) {
@@ -40,6 +41,11 @@ var handlers = {
     var nick    = data.nick;
     var channel = data.channel;
     var message = data.message;
+    var usec = data.usec;
+    if (prev_usec = usec) {
+      return;
+    }
+    prev.usec = usec;
 
     var div = $("<div/>").addClass("irc")
     .append($("<p/>")
