@@ -42,10 +42,6 @@ var handlers = {
     var channel = data.channel;
     var message = data.message;
     var usec = data.usec;
-    if (prev_usec = usec) {
-      return;
-    }
-    prev.usec = usec;
 
     var div = $("<div/>").addClass("irc")
     .append($("<p/>")
