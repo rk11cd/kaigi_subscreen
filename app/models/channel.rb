@@ -4,4 +4,6 @@ class Channel < ActiveRecord::Base
 
   has_many :assignments
   has_many :screens, :through => :assignments
+
+  attr_accessible :group, :name # NOTE is it OK?
 end
