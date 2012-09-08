@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Subscreen::Application.config.secret_token = 'b329fb406ab46afef16c57741b3e158cb904cfc2fe78de3ede962ea7a3c5ecef8fbce62b099b56d027bb3297aa47c0aff2c8f1eaf67b193eb3d748256f88aefb'
+Subscreen::Application.config.secret_token = '43cf7bbb9054792bd6406dd229fac683bf853a9114e7a68748e9365643f266df2346aba29f9014c4a6198e13d04cd1f94dc7d7027a2c904725b8672220576514'
