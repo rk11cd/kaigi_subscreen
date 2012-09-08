@@ -13,7 +13,16 @@ twitter:
     - screen_name_1
     - screen_name_2
 irc:
+  server: irc.rubykaigi.org
+  port: 6667
   nick: nick
   user: user
   real: real
   pass: pass
+  channels:
+    - rubykaigi
+    - kaigi1
+    - kaigi2
+    - kaigi1-m17n
+    - kaigi2-m17n
+    - rubykaigi-staff

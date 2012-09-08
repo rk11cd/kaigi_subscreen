@@ -30,13 +30,12 @@ class IrcPasser < Passer
   end
 end
 
-channels = %w(rubykaigi kaigi1 kaigi2 kaigi1-m17n kaigi2-m17n rubykaigi-staff)
-client = Client.new("irc.rubykaigi.org", 6667,
+client = Client.new(configatron.irc.server, configatron.irc.port,
                     {
                       :user     => configatron.irc.user,
                       :nick     => configatron.irc.nick,
                       :real     => configatron.irc.real,
                       :pass     => configatron.irc.pass,
-                      :channels => channels
+                      :channels => configatron.irc.channels
                     })
 client.start
