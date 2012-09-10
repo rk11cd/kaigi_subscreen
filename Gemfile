@@ -17,6 +17,8 @@ gem "pusher"
 group :development do
   gem "sqlite3"
 
+  gem "eventmachine"
+  gem "twitter-stream"
   gem "yajl-ruby"
   gem "net-irc"
   gem "eventmachine"

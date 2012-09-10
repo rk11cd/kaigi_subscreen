@@ -1,18 +1,17 @@
 require_relative "passer"
 require "uri"
+require "time"
+require "eventmachine"
+require "twitter/json_stream"
 require "yajl"
-require "yajl/http_stream"
+
 
 class TwitterSearchPasser < Passer
-  def initialize(auth, query, exclude = nil)
-    setting = configatron.twitter.to_hash
-    username = setting[auth.to_sym][:username]
-    password = setting[auth.to_sym][:password]
-
+  def initialize(query, exclude = nil)
     @query   = query
     @exclude = exclude
+    @oauth   = configatron.twitter.oauth.to_hash
     @ignore  = configatron.twitter.ignore || []
-    @auth    = "#{username}:#{password}"
 
     super(:stream, "tweet-#{query}")
   end
@@ -22,33 +21,58 @@ class TwitterSearchPasser < Passer
     current = Time.now.strftime("%Y%m%d%H")
     logfile = open(File.join(File.dirname(__FILE__), "..", "..", "db", "tweets", "#{@query}.#{current}"), "a+")
 
-    uri = URI.parse("http://#{@auth}@stream.twitter.com/1/statuses/filter.json?track=#{URI.encode(@query)}")
-    Yajl::HttpStream.get(uri) do |tweet|
-      next if @ignore.include? tweet["user"]["screen_name"]
-      next if @exclude && tweet["text"].include?(@exclude)
+    EventMachine::run {
+      EventMachine::defer {
+        begin
+          stream = Twitter::JSONStream.connect({
+            :path  => "/1/statuses/filter.json?track=#{URI.encode(@query)}",
+            :ssl   => true,
+            :oauth => @oauth
+          })
 
-      p tweet
-      pass(tweet)
+          stream.each_item { |item|
+            tweet = Yajl::Parser.parse(item)
 
-      current = Time.now.strftime("%Y%m%d%H")
-      unless current == prev
-        logfile.close
-        logfile = open(File.join(File.dirname(__FILE__), "..", "..", "db", "tweets", "#{@query}.#{current}"), "a+")
-      end
+            next if @ignore.include? tweet["user"]["screen_name"]
+            next if @exclude && tweet["text"].include?(@exclude)
 
-      logfile.puts tweet
+            puts "[%s] @%s: %s" % [Time.parse(tweet["created_at"]).strftime("%H:%M:%S"), tweet["user"]["screen_name"], tweet["text"]]
+            pass(tweet)
 
-      prev = current
-    end
+            current = Time.now.strftime("%Y%m%d%H")
+            unless current == prev
+              logfile.close
+              logfile = open(File.join(File.dirname(__FILE__), "..", "..", "db", "tweets", "#{@query}.#{current}"), "a+")
+            end
+
+            logfile.puts tweet
+
+            prev = current
+          }
+
+          stream.on_error { |message|
+            puts message
+          }
+
+          trap('TERM') {
+            stream.stop
+            EventMachine.stop if EventMachine.reactor_running?
+          }
+        rescue => e
+          puts e
+          exit
+        end
+      }
+    }
 
     logfile.close
   end
 end
 
-auth = ARGV[0]
-query   = ARGV[1] || "rubykaigi"
-exclude = ARGV[2]
-p query, exclude
+query   = ARGV[0] || "sprk2012"
+exclude = ARGV[1]
+puts "Query   : #{query}"
+puts "Exclude : #{exclude}"
 
-twitter = TwitterSearchPasser.new(auth, query, exclude)
+twitter = TwitterSearchPasser.new(query, exclude)
 twitter.start
