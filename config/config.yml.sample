@@ -3,12 +3,11 @@ pusher:
   key:    key
   secret: secret
 twitter:
-  auth1:
-    username: username
-    password: password
-  auth2:
-    username: username
-    password: password
+  oauth:
+    consumer_key: your_consumer_key
+    consumer_secret: your_consumer_secret
+    access_key: your_access_key
+    access_secret: your_access_secret
   ignore:
     - screen_name_1
     - screen_name_2
