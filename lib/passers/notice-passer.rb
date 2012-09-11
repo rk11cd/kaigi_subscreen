@@ -25,5 +25,5 @@ class NoticePasser < Passer
   end
 end
 
-notice = NoticePasser.new("http://rk11subscreen.herokuapp.com/notices/sample.json")
+notice = NoticePasser.new("http://sprk2012subscreen.herokuapp.com/notices/sample.json")
 notice.start
