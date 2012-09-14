@@ -4,4 +4,6 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :screen
   belongs_to :channel
+
+  attr_accessible :screen, :channel # NOTE is it OK?
 end
