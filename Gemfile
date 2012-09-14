@@ -13,6 +13,7 @@ gem "jquery-rails"
 
 gem "configatron"
 gem "pusher"
+gem "rails_emoji"
 
 group :development do
   gem "sqlite3"

@@ -47,7 +47,7 @@ var handlers = {
     .append($("<p/>")
             .append($("<span/>").addClass("screen_name")
                     .text(nick))
-                    .append($('<span/>').text(message)));
+                    .append($('<span/>').html(message)));
 
                     prepend(div);
   }

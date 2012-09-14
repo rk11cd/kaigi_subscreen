@@ -1,4 +1,6 @@
 require_relative "passer"
+require "bundler"
+Bundler.require
 require "net/irc"
 
 class Client < Net::IRC::Client
@@ -19,8 +21,9 @@ class Client < Net::IRC::Client
   def on_privmsg(m)
     channel, message = *m
     nick = m.prefix.nick.to_s
+    html = RailsEmoji.render(CGI.escapeHTML(message), :class => :emoji)
 
-    @passers[channel.sub(/^#/,"").downcase].pass(:nick => nick, :message => message, :usec => Time.now.usec)
+    @passers[channel.sub(/^#/,"").downcase].pass(:nick => nick, :message => html, :usec => Time.now.usec)
   end
 end
 
